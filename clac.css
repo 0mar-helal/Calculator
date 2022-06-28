@@ -1,0 +1,174 @@
+* {
+    user-select: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+body {
+    background-image: linear-gradient(to right,#4776E6,#8E54E9);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.clac {
+    background-color: white;
+    padding: 20px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 0 30px #000;
+}
+.clac .chng-mod {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: #404040;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: -1;
+    transition: 1s;
+}
+.clac .result {
+    position: relative;
+    margin: 60px auto 30px;
+    width: 85%;
+    font-size: 25px;
+    color: #000;
+    padding: 10px 0px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.clac .result .ans {
+    color: #3494E6;
+}
+.clac .result::before {
+    content:'';
+    position: absolute;
+    right: 0;
+    background-color: #3494E6;
+    height: 70%;
+    width: 1px;
+    animation: pointer 1s both infinite ;
+}
+.clac .clac-body {
+    display: grid;
+    grid-template-columns: repeat(4,70px);
+    gap: 5px 5px;
+}
+.clac .clac-body div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    width: 55px;
+    height: 55px;
+    font-size: 23px;
+    border-radius: 50%;
+    perspective: 500px;
+    transition: all .3s;
+}
+.clac .clac-body div.click {
+    animation: click 0.5s forwards;
+}
+
+/*  Light Theme  */
+
+.clac .clac-body .clear {
+    background-color: #ffd5d8;
+    color: #fc4552;
+    font-weight: bold;
+}
+.clac .clac-body .num {
+    background-color: #c3eaff;
+}
+.clac .clac-body .operate,
+.clac .clac-body .bracket,
+.clac .clac-body .del {
+    background-color: #ffd0df;
+    font-weight: bold;
+    color: #f967f3;
+}
+.clac .clac-body .equal {
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #28ffcd;
+}
+
+/*  Dark Theme  */
+
+body.dark {
+    background-image: linear-gradient(to right,#283048,#859398);
+}
+.clac.dark {
+    background-color: #071115;
+}
+.clac.dark .chng-mod {
+    background-color: white;
+}
+.clac.dark .result {
+    color: white;
+}
+.clac.dark .result::before {
+    background-color: #28ffcd;
+}
+.clac.dark .result .ans {
+    color:#28ffcd;
+}
+.clac.dark .clac-body .clear {
+    background-color: #2d191e;
+    color: #bd3740;
+}
+.clac.dark .clac-body .num {
+    background-color: #1b2f38;
+    color: #f8fafb;
+}
+.clac.dark .clac-body .operate,
+.clac.dark .clac-body .bracket,
+.clac.dark .clac-body .del {
+    background-color: #6b1668;
+    color: #f967f3;
+}
+.clac.dark .clac-body .equal {
+    background-color: rgba(81, 255, 92, 0.796);
+}
+
+/*  Animation  */
+
+@keyframes pointer {
+    0%,20% ,30% ,40%{
+        opacity: 0;
+    }
+    50%,70%,80%,90%,100% {
+        opacity: 1;
+    } 
+}
+@keyframes click {
+    0% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*  Media Query  */
+
+@media (max-width:767px) {
+    .clac {
+        padding:15px;
+    }
+    .clac .clac-body {
+        grid-template-columns: repeat(4,60px);
+        gap:10px 5px;
+    }
+    .clac .clac-body div {
+        width:50px;
+        height:50px;
+    }
+}
